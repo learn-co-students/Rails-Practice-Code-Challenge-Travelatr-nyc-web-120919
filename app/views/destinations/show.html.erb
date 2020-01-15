@@ -1,0 +1,22 @@
+<h1>Destination Show Page</h1>
+<p><strong>Name: </strong><%=@destination.name%></p>
+<p><strong>Country: </strong><%=@destination.country%></p>
+
+<% if @destination.posts.length > 0 %>
+<p><strong>Featured Post: </strong><%= link_to @destination.most_likes.title, post_path(@destination.most_likes) %>
+<% else %>
+<p><strong>Featured Post: </strong> No posts for this destination have been 'liked' yet </p>
+<% end %>
+
+<p><strong>Average Blogger Age: </strong><%=@destination.average_blogger_age%></p>
+
+<p><strong>Recent Posts: </strong></p>
+<ul>
+<% @destination.recent_five.each do |post| %>
+    <li><%= link_to post.title, post_path(post) %></li>
+    <% end %>
+</ul>   
+<br>
+<h4><%= link_to "Create New Post", new_post_path %></h4>
+<%= link_to "Destination Index", destinations_path %>
+

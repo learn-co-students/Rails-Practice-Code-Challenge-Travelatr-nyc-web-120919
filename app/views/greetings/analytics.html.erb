@@ -1,0 +1,14 @@
+<h1>Site Data</h1>
+<h2>Blogger Info</h2>
+<ul>
+<li><strong>Current number of bloggers: </strong><%=@bloggers.count%></li>
+<li><strong>Average age of each blogger: </strong><%=Blogger.average_age%></li>
+<li><strong>Average number of posts per blogger: </strong><%=Blogger.average_num_of_posts%></li>
+<li><strong>Most prolific blogger: </strong><%=Blogger.most_prolific.name%></li>
+<ul><li><%= "#{Blogger.most_prolific.posts.count} total posts by this blogger"%></li></ul>
+</ul>
+<h2>Destination Info</h2>
+
+
+
+</ul>

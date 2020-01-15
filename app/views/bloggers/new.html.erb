@@ -1,0 +1,20 @@
+<h1>New Blogger Form</h1>
+
+<% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+        <li style="color:red"><%= error %></li>
+    <% end %>
+<% end %>        
+
+<%= form_for @blogger do |f| %>
+<p><%= f.label "Name:" %>
+<%= f.text_field :name %></p>
+<p><%= f.label "Bio:" %>
+<%= f.text_area :bio %></p>
+<p><%= f.label "Age:" %>
+<%= f.number_field :age %></p>
+<%= f.submit :submit %>
+<% end %>  
+
+<br>
+<%= link_to "cancel action", bloggers_path %> 

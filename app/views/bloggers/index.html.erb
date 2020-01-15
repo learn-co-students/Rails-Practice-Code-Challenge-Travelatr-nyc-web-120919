@@ -1,0 +1,14 @@
+<h1>Blogger Index Page</h1>
+<ul>
+<% @bloggers.each do |blogger| %>
+    <li><%= link_to blogger.name, blogger_path(blogger) %></li>
+    <% end %>
+</ul>   
+
+<br>
+<%= link_to "add a new blogger", new_blogger_path %>
+<br>
+<br>
+<%= link_to "Destination Index", destinations_path %>
+<br>
+<%= link_to "Post Index", posts_path %>

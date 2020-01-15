@@ -1,0 +1,15 @@
+<h1>Post Show Page</h1>
+<p><strong>Title: </strong><%=@post.title%></p>
+<p><strong>Author: </strong><%=link_to @post.blogger.name, blogger_path(@post.blogger)%></p>
+<p><strong>Destination: </strong><%=link_to @post.destination.name, destination_path(@post.destination)%></p>
+<p><strong>Contents: </strong><%="#{@post.content}"%></p>
+<p><strong>Likes: </strong><%=@post.likes%></p>
+<br>
+<%= button_to "Like Post", like_post_path(@post), method: :patch %>
+
+<br>
+<%= link_to "Edit Post", edit_post_path(@post) %>
+<br>
+
+<p><%= link_to "Post Index Page", posts_path %>
+ 
