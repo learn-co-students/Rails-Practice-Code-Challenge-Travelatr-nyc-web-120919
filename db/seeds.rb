@@ -5,9 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Post.destroy_all
+Destination.destroy_all
+Blogger.destroy_all
 
-
-30.times do 
+10.times do 
   Destination.create({
     name: Faker::GameOfThrones.city,
     country: Faker::Address.country
@@ -32,3 +34,5 @@ end
     })
   end
 end
+
+

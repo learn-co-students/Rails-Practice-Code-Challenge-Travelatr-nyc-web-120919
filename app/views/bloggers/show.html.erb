@@ -1,0 +1,27 @@
+<h1>Show Page</h1>
+
+<p><strong>Name: </strong><%=@blogger.name%></p>
+<p><strong>Bio: </strong><%=@blogger.bio%></p>
+<p><strong>Age: </strong><%=@blogger.age%></p>
+
+<% if @blogger.posts.length > 0 %>
+<p><strong>Featured Post: </strong><%= link_to @blogger.most_likes.title, post_path(@blogger.most_likes)%></p>
+<% else %>
+<p><strong>Featured Post: </strong>This Blogger has not written a post yet!</p>
+<% end %>
+
+<p><strong>Total Likes: </strong><%=@blogger.total_likes%></p>
+
+<p><strong>Top 5 Destinations: </strong>
+<ul>
+<% @blogger.top_five_destinations.each do |destination| %>
+    <li><%= destination %></li>
+    <% end %>
+</ul> 
+
+
+
+<%= link_to "Create new post", new_post_path %>
+<br>
+<%= link_to "Blogger Index", bloggers_path%>
+
