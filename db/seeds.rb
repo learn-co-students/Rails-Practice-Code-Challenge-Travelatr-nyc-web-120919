@@ -25,8 +25,8 @@ end
   (2..6).to_a.sample.times do 
     Post.create({
       title: Faker::Hipster.sentence(3),
-      content: Faker::Hipster.paragraphs(4),
-      likes: 0,
+      content: Faker::Hipster.paragraphs(4).join(" "),
+      likes: (0..15).to_a.sample,
       blogger: blogger,
       destination: Destination.all.sample
     })
