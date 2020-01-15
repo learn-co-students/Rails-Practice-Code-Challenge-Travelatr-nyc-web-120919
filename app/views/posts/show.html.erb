@@ -1,0 +1,20 @@
+<h1><%= @post.title %></h1><br><br>
+
+Content: <%= @post.content %><br><br>
+Post Likes: <%= @post.likes %><br><br>
+Blogger: <%= link_to @post.blogger.name, blogger_path(@post.blogger) %><br><br>
+
+<% top_destinations = [] %>
+<ul>
+<% @destinations.each do |destination| %>
+    <% if destination.id == @post.destination_id %>
+    <% top_destinations << destination %>
+    <li>
+    Destination: <%= link_to destination.name, destination_path(destination) %><br>
+    Country: <%= destination.country %>
+    </li><br>
+    <% end %> 
+    <% end %>
+</ul>
+
+

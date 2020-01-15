@@ -1,0 +1,27 @@
+<h1><%= @blogger.name %></h1><br>
+<%= @blogger.age %><br>
+<p><%= @blogger.bio %></p>
+
+<% posts_array = [] %>
+<ul>
+<% @posts.each do |post| %>
+    <% if post.blogger_id == @blogger.id %> 
+    <% posts_array << post %>
+    <li>
+        Post: <%= post.title %><br>    
+       Likes: <%= post.likes %>
+    </li><br>
+    <% end %>
+    <% end %>
+</ul>
+<div>
+    <% sorted_posts = posts_array.sort_by(&:likes) %>
+    <h3>Featured Post: 
+    <% if sorted_posts.first == nil %>
+        This blogger has no posts
+    <% else %>
+    <%= link_to sorted_posts.last.title, post_path(sorted_posts.last) %></h3>
+    <% end %>
+</div><br> 
+        
+Total Likes: <%= posts_array.sum(&:likes) %>

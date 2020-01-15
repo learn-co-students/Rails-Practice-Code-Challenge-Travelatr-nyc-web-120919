@@ -1,0 +1,40 @@
+<h1><%= @destination.name %></h1><br><br>
+
+Country: <%= @destination.country %><br><br>
+
+<% destination_posts = [] %>
+<% blogger_ages = [] %>
+    
+    <% @posts.each do |post| %>
+        <% if post.destination_id == @destination.id %>
+        <% destination_posts << post %>
+        <% end %>
+    <% end %>
+<div>
+        <% destination_posts.last(5).each do |post| %>
+            <li>
+                <%= link_to post.title, post_path(post) %>
+            </li>
+        <% end %>
+</div>
+<div>
+    <% sorted_posts = destination_posts.sort_by(&:likes) %>
+      <h3>Featured Post: 
+      <% if sorted_posts.first == nil %>
+          These posts have no likes
+      <% else %>
+      <%= link_to sorted_posts.last.title, post_path(sorted_posts.last) %></h3>
+      <% end %>   
+</div>  
+<div>
+    <% unique_bloggers = destination_posts.uniq{|post| post.blogger_id} %>
+    <% unique_bloggers.each do |post| %> 
+        <% blogger_ages << post.blogger.age %>
+    <% end %>
+    <% if unique_bloggers.count == 0 %>
+        There are no bloggers for this destination
+    <% else %>
+    Average Blogger Age: <%= (blogger_ages.sum) / (unique_bloggers.count) %>
+    <% end %>
+</div>
+   

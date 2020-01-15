@@ -1,0 +1,11 @@
+<h1>Create New Post Form</h1><br>
+
+<%= render "form" %>
+
+<% if flash[:errors] %>
+<% flash[:errors].each do |error| %>
+    <div>
+        <%= error %>
+    </div>
+<% end %>
+<% end %> 
